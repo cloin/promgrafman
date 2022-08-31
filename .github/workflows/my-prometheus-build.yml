@@ -22,6 +22,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Build image
+        working-directory: prom
         run: docker build . --file Dockerfile --tag $IMAGE_NAME --label "runnumber=${GITHUB_RUN_ID}"
 
       - name: Log in to registry
@@ -29,6 +30,7 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
       - name: Push image
+        working-directory: prom
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
