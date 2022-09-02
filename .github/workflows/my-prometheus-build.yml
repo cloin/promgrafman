@@ -2,7 +2,7 @@ name: Build my-prometheus container image
 on:
   push:
     paths:
-      - "prom/*"
+      - "prom/**"
     tags:
       - v*
   workflow_dispatch:
