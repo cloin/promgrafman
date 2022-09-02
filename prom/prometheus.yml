@@ -21,3 +21,14 @@ scrape_configs:
   - job_name: 'node'
     static_configs:
       - targets: ['rhel8:9100']
+      
+groups:
+  - name: node_alerts
+    rules:
+    - alert: SelinuxDisabled
+      expr: job:node_selinux_current_mode{job="node"} < 1
+      for: 15s
+      labels:
+        severity: page
+      annotations:
+        summary: Security disabled
