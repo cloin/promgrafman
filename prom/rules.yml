@@ -2,8 +2,8 @@ groups:
   - name: node_alerts
     rules:                  
     - alert: SelinuxDisabled                             
-      expr: job:node_selinux_current_mode{job="node"} < 1
-      for: 15s                                           
+      expr: node_selinux_current_mode{job="node"} < 1
+      for: 1s                                           
       labels:                                            
         severity: event_trigger
       annotations:                
