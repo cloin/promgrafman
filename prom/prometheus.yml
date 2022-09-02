@@ -32,3 +32,9 @@ groups:
         severity: page
       annotations:
         summary: Security disabled
+
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets:
+        - alertmanager:9093
